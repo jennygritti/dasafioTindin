@@ -1,0 +1,55 @@
+<div class="container">
+
+  <div class="container-fluid">
+    <div class="row d-flex align-items-baseline">
+
+      <!-- entrar -->
+      <div class="col-md-6">
+        <h1 class="text-center mt-5">Entrar</h1>
+        <p class="text-center">Já tem cadastro? Entre aqui!</p>
+        <div class="form-group">
+          <label for="usuario"></label>
+          <input [(ngModel)]="userLogin.email" class="form-control" type="text" name="usuario" id="usuario" placeholder="Email do Usuário"/>
+        </div>
+        <div class="form-group">
+          <label for="senha"></label>
+          <input [(ngModel)]="userLogin.password" class="form-control" type="password" name="senha" id="senha" placeholder="Senha"/>
+        </div>
+        <div class="d-flex justify-content-center mt-5 mb-5">
+          <button type="submit" class="btn btn-outline-success">
+            Entrar
+          </button>
+        </div>
+      </div>
+      <!-- /entrar -->
+
+      <!-- cadastro -->
+      <div class="col-md-6">
+        <h1 class="text-center mt-5">Cadastrar</h1>
+        <p class="text-center">Faça seu cadastro aqui!</p>
+        <div class="form-group">
+          <label for="usuario"></label>
+          <input [(ngModel)]="user.email" class="form-control" type="text" name="usuario" id="usuario" placeholder="Email do Usuário"/>
+        </div>
+        <div class="form-group">
+          <label for="senha"></label>
+          <input (input)="confirmSenha($event)" class="form-control" type="password" name="senha" id="senha" placeholder="Senha"/>
+        </div>
+        <div class="form-group">
+          <label for="senha"></label>
+          <input [(ngModel)]="user.password" class="form-control" type="password" name="confirmSenha" id="confirmSenha" placeholder="Confirmar Senha"/>
+        </div>
+        <div class="d-flex justify-content-center mt-5 mb-5">
+          <button type="submit" class="btn btn-outline-danger">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-outline-success ml-5" (click)="cadastrar()" >
+            Cadastrar
+          </button>
+        </div>
+      </div>
+      <!-- /cadastro -->
+
+    </div>
+  </div>
+</div>

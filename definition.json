@@ -1,0 +1,1274 @@
+{
+  "servers": [
+    {
+      "url": "https://api-labs.tindin.com.br/",
+      "description": "Production"
+    }
+  ],
+  "info": {
+    "title": "tindin-api-labs",
+    "version": "1.6.0",
+    "description": "Welcome to the official documentation of the Tindin api labs",
+    "x-logo": {
+      "url": "https://cdn.tindin.com.br/logo-tindin-w-blue.png",
+      "backgroundColor": "#1e3e88",
+      "altText": "Tindin"
+    }
+  },
+  "tags": [
+    {
+      "name": "System",
+      "description": "Monitoring routines and general system management."
+    },
+    {
+      "name": "Auth",
+      "description": "Authentication"
+    },
+    {
+      "name": "Game",
+      "description": "Games"
+    },
+    {
+      "name": "GameCompany",
+      "description": "Game companies"
+    }
+  ],
+  "swagger": "2.0",
+  "paths": {
+    "/auth": {
+      "post": {
+        "summary": "Authenticate user",
+        "tags": [
+          "Auth"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "User to authenticate.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "email",
+                "password"
+              ],
+              "properties": {
+                "password": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authenticated",
+            "schema": {
+              "$ref": "#/definitions/Authenticated"
+            }
+          },
+          "401": {
+            "description": "Invalid email or password",
+            "schema": {
+              "$ref": "#/definitions/invalidLogin"
+            }
+          },
+          "422": {
+            "description": "Invalid schema",
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/EmailNotProvided"
+                },
+                {
+                  "$ref": "#/definitions/PasswordNotProvided"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/games/{gameId}": {
+      "delete": {
+        "summary": "delete game",
+        "tags": [
+          "Game"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gameId",
+            "description": "game _id to be deleted"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Game updated",
+            "schema": {
+              "$ref": "#/components/schemas/Game"
+            }
+          },
+          "401": {
+            "description": "Not Authorized",
+            "schema": {
+              "$ref": "#/definitions/NotAuthorizedError"
+            }
+          },
+          "412": {
+            "description": "Game not found",
+            "schema": {
+              "$ref": "#/definitions/GameNotFound"
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "get game",
+        "tags": [
+          "Game"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gameId",
+            "description": "game _id to be found"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "game found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "resume": {
+                  "type": "string"
+                },
+                "photos": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "videos": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "TRAILER",
+                          "GAMEPLAY",
+                          "CUSTOM"
+                        ]
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "rating": {
+                  "type": "number"
+                },
+                "mediumPrice": {
+                  "type": "number"
+                },
+                "studio": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GameStudio"
+                    }
+                  }
+                },
+                "productor": {
+                  "type": "string"
+                },
+                "totalVotes": {
+                  "type": "number"
+                },
+                "company": {
+                  "type": "object",
+                  "properties": {
+                    "schema": {
+                      "$ref": "#/components/schemas/GameCompany"
+                    }
+                  }
+                },
+                "launchDate": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "releaseYear": {
+                  "type": "number"
+                },
+                "highlight": {
+                  "type": "boolean"
+                },
+                "genres": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "schema": null,
+                    "$ref": "#/components/schemas/GameGenresEnum"
+                  }
+                },
+                "platforms": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "schema": null,
+                    "$ref": "#/components/schemas/GamePlatformsEnum"
+                  }
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Game not found",
+            "schema": {
+              "$ref": "#/definitions/GameNotFound"
+            }
+          }
+        }
+      }
+    },
+    "/games": {
+      "post": {
+        "summary": "insert game",
+        "tags": [
+          "Game"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "required": [
+                "title",
+                "description"
+              ],
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "photos": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "videos": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "TRAILER",
+                          "GAMEPLAY",
+                          "CUSTOM"
+                        ]
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "mediumPrice": {
+                  "type": "number"
+                },
+                "studio": {
+                  "type": "object id"
+                },
+                "company": {
+                  "type": "object id"
+                },
+                "releaseYear": {
+                  "type": "number"
+                },
+                "genres": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "schema": null,
+                    "$ref": "#/components/schemas/GameGenresEnum"
+                  }
+                },
+                "platforms": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "schema": null,
+                    "$ref": "#/components/schemas/GamePlatformsEnum"
+                  }
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Game inserted",
+            "schema": {
+              "$ref": "#/components/schemas/Game"
+            }
+          },
+          "401": {
+            "description": "Not Authorized",
+            "schema": {
+              "$ref": "#/definitions/NotAuthorizedError"
+            }
+          },
+          "422": {
+            "description": "Invalid InvalidSchema",
+            "schema": {
+              "$ref": "#/definitions/InvalidSchema"
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "List games",
+        "tags": [
+          "Game"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "description": "substring that will match documents which name includes the substring provided",
+            "example": "Dark souls",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "studio",
+            "description": "studio _id that will match documents which studio ref is the _id provided",
+            "example": "623d096cbc5c50e0371024e3",
+            "required": false,
+            "type": "object id"
+          },
+          {
+            "in": "query",
+            "name": "company",
+            "description": "company _id that will match documents which company ref is the _id provided",
+            "example": "623d096cbc5c50e0371024e3",
+            "required": false,
+            "type": "object id"
+          },
+          {
+            "in": "query",
+            "name": "platform",
+            "description": "platform that will match documents which platforms include platform provided",
+            "example": "PS",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "highlight",
+            "description": "higlight that will match documents which highlight is equal to value provided",
+            "example": "true",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "page number",
+            "example": 1,
+            "required": false,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "name": "perPage",
+            "description": "set how many results per page will be provided",
+            "example": 30,
+            "required": false,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "games list",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "resume": {
+                    "type": "string"
+                  },
+                  "photos": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "videos": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "TRAILER",
+                            "GAMEPLAY",
+                            "CUSTOM"
+                          ]
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "rating": {
+                    "type": "number"
+                  },
+                  "mediumPrice": {
+                    "type": "number"
+                  },
+                  "studio": {
+                    "type": "object",
+                    "properties": {
+                      "schema": {
+                        "$ref": "#/components/schemas/GameStudio"
+                      }
+                    }
+                  },
+                  "productor": {
+                    "type": "string"
+                  },
+                  "totalVotes": {
+                    "type": "number"
+                  },
+                  "company": {
+                    "type": "object",
+                    "properties": {
+                      "schema": {
+                        "$ref": "#/components/schemas/GameCompany"
+                      }
+                    }
+                  },
+                  "launchDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "releaseYear": {
+                    "type": "number"
+                  },
+                  "highlight": {
+                    "type": "boolean"
+                  },
+                  "genres": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "schema": null,
+                      "$ref": "#/components/schemas/GameGenresEnum"
+                    }
+                  },
+                  "platforms": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "schema": null,
+                      "$ref": "#/components/schemas/GamePlatformsEnum"
+                    }
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "update game",
+        "tags": [
+          "Game"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "_id",
+            "description": "game _id",
+            "schema": {
+              "type": "object",
+              "required": [
+                "_id"
+              ],
+              "properties": {
+                "_id": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "releaseYear": {
+                  "type": "number"
+                },
+                "mediumPrice": {
+                  "type": "number"
+                },
+                "launchDate": {
+                  "type": "Date"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Game updated",
+            "schema": {
+              "$ref": "#/components/schemas/Game"
+            }
+          },
+          "401": {
+            "description": "Not Authorized",
+            "schema": {
+              "$ref": "#/definitions/NotAuthorizedError"
+            }
+          },
+          "412": {
+            "description": "Game not found",
+            "schema": {
+              "$ref": "#/definitions/GameNotFound"
+            }
+          },
+          "422": {
+            "description": "Invalid InvalidSchema",
+            "schema": {
+              "$ref": "#/definitions/InvalidSchema"
+            }
+          }
+        }
+      }
+    },
+    "/games/rate": {
+      "post": {
+        "summary": "rate game",
+        "tags": [
+          "Game"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "required": [
+                "gameId",
+                "rate"
+              ],
+              "properties": {
+                "gameId": {
+                  "type": "string",
+                  "description": "The game to be rated _id."
+                },
+                "rate": {
+                  "type": "number",
+                  "description": "game rate provided"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "game": {
+                      "type": "string",
+                      "description": "The game _id."
+                    },
+                    "rating": {
+                      "type": "number",
+                      "description": "Game updated rating."
+                    },
+                    "totalVotes": {
+                      "type": "number",
+                      "description": "Game rating total votes."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not Authorized",
+            "schema": {
+              "$ref": "#/definitions/NotAuthorizedError"
+            }
+          },
+          "412": {
+            "description": "Game not found",
+            "schema": {
+              "$ref": "#/definitions/GameNotFound"
+            }
+          },
+          "422": {
+            "description": "Invalid InvalidSchema",
+            "schema": {
+              "$ref": "#/definitions/InvalidSchema"
+            }
+          }
+        }
+      }
+    },
+    "/games/companies": {
+      "get": {
+        "summary": "List game companies",
+        "tags": [
+          "GameCompany"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "description": "substring that will match documents which name includes the substring provided",
+            "example": "From software",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "locationCity",
+            "description": "substring that will match documents which locationCity includes the substring provided",
+            "example": "LA",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "locationCountry",
+            "description": "substring that will match documents which locationCountry includes the substring provided",
+            "example": "USA",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "page number",
+            "example": 1,
+            "required": false,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "name": "perPage",
+            "description": "set how many results per page will be provided",
+            "example": 30,
+            "required": false,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "game companies list",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GameCompany"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/games/studios": {
+      "get": {
+        "summary": "List game studios",
+        "tags": [
+          "GameStudio"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "description": "substring that will match documents which name includes the substring provided",
+            "example": "From software",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "locationCity",
+            "description": "substring that will match documents which locationCity includes the substring provided",
+            "example": "LA",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "locationCountry",
+            "description": "substring that will match documents which locationCountry includes the substring provided",
+            "example": "USA",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "page number",
+            "example": 1,
+            "required": false,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "name": "perPage",
+            "description": "set how many results per page will be provided",
+            "example": 30,
+            "required": false,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "game studio list",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GameStudio"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health-check": {
+      "get": {
+        "summary": "Get Application Health",
+        "tags": [
+          "System"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Health Application",
+            "schema": {
+              "$ref": "#/components/schemas/System-health"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "EmailNotProvided": {
+      "description": "email not provided",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "EMAIL_NOT_PROVIDED"
+        },
+        "message": {
+          "type": "string",
+          "example": "Email not provided"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": 422
+        }
+      }
+    },
+    "PasswordNotProvided": {
+      "description": "password not provided",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "PASSWORD_NOT_PROVIDED"
+        },
+        "message": {
+          "type": "string",
+          "example": "Password not provided"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": 422
+        }
+      }
+    },
+    "invalidLogin": {
+      "description": "invalid login",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "INVALID_LOGIN"
+        },
+        "message": {
+          "type": "string",
+          "example": "Invalid email or password"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": 401
+        }
+      }
+    },
+    "GameNotFound": {
+      "description": "Game not found",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "GAME_NOT_FOUND"
+        },
+        "message": {
+          "type": "string",
+          "example": "game \"1234567\" not found"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": 412
+        }
+      }
+    },
+    "GameGenresEnum": {
+      "type": "string",
+      "enum": [
+        "Fight",
+        "Sports",
+        "Survival",
+        "Horror",
+        "RPG",
+        "Fps",
+        "Tps",
+        "Platform",
+        "Adventure",
+        "Action",
+        "Minigame",
+        "Racing",
+        "Strategy",
+        "Musical",
+        "Dance",
+        "Simulator"
+      ]
+    },
+    "GamePlatformsEnum": {
+      "type": "string",
+      "enum": [
+        "PS",
+        "PS2",
+        "PS3",
+        "PS4",
+        "PS5",
+        "PSP",
+        "XBOX",
+        "XBOX 360",
+        "XBOX ONE",
+        "XBOX SERIES S",
+        "XBOX SERIES X",
+        "SUPER NINTENDO",
+        "NINTENDO 64",
+        "NINTENDO SWITCH",
+        "NINTENDO WII",
+        "NINTENDO DS",
+        "NINTENDO 3DS",
+        "MEGA DRIVE",
+        "PC",
+        "MOBILE"
+      ]
+    },
+    "GameTagsEnum": {
+      "type": "string",
+      "enum": [
+        "GOTY",
+        "DISAPPOINTMENT",
+        "OK",
+        "BEST GAME EVER",
+        "WORST GAME EVER",
+        "SAD",
+        "EXCITING",
+        "TAKE MY MONEY",
+        "TRASH",
+        "AAA",
+        "INDIE"
+      ]
+    },
+    "Game": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "resume": {
+          "type": "string"
+        },
+        "photos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "videos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "TRAILER",
+                  "GAMEPLAY",
+                  "CUSTOM"
+                ]
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "rating": {
+          "type": "number"
+        },
+        "mediumPrice": {
+          "type": "number"
+        },
+        "studio": {
+          "type": "Object id",
+          "example": "a"
+        },
+        "totalVotes": {
+          "type": "number"
+        },
+        "company": {
+          "type": "string"
+        },
+        "launchDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "releaseYear": {
+          "type": "number"
+        },
+        "highlight": {
+          "type": "boolean"
+        },
+        "genres": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "schema": null,
+            "$ref": "#/components/schemas/GameGenresEnum"
+          }
+        },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "schema": null,
+            "$ref": "#/components/schemas/GamePlatformsEnum"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "GameCompany": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "locationCity": {
+          "type": "string"
+        },
+        "locationCountry": {
+          "type": "string"
+        }
+      }
+    },
+    "GameStudio": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "locationCity": {
+          "type": "string"
+        },
+        "locationCountry": {
+          "type": "string"
+        }
+      }
+    },
+    "System-health": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        },
+        "date": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "number"
+        },
+        "integrations": {
+          "type": "object",
+          "properties": {
+            "database": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "response_time": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Authenticated": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "user": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "InvalidSchema": {
+      "description": "Invalid input",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "INVALID_SCHEMA"
+        },
+        "message": {
+          "type": "string",
+          "example": "required field: email not provided"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": 422
+        }
+      }
+    },
+    "InvalidUpdateInputUpdate": {
+      "description": "Invalid update input",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "INVALID_UPDATE_INPUT"
+        },
+        "message": {
+          "type": "string",
+          "example": "Value x is not valid to field y"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": 422
+        }
+      }
+    },
+    "NotAuthorizedError": {
+      "description": "Not authorized",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "NOT_AUTHORIZED"
+        },
+        "message": {
+          "type": "string",
+          "example": "Not authorized"
+        },
+        "statusCode": {
+          "type": "number",
+          "example": 401
+        }
+      }
+    }
+  },
+  "responses": {},
+  "parameters": {},
+  "securityDefinitions": {}
+}

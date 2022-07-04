@@ -1,0 +1,34 @@
+.barra {
+  min-height: 125px;
+}
+
+.pesquisaButton {
+  background-color: var(--dark);
+  border-radius: 5px;
+  padding:0.750rem 2rem;
+  color: var(--white);
+  margin-left: -60px;
+}
+
+.pesquisaButton:hover {
+  background-color: var(--rosa-td);
+}
+
+.link {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.link:hover{
+  text-decoration: underline;
+  color: var(--dark);
+}
+
+.icons {
+  color: var(--white);
+  cursor: pointer;
+}
+
+.icons:hover{
+  color: var(--dark);
+}

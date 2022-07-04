@@ -1,0 +1,43 @@
+<div class="container-fluid fundo">
+  <div class="row fundo barra">
+    <div class="col-md-3 d-flex  align-items-center">
+      <img
+        src="assets/img/logoTindin.png"
+        alt=""
+        class="logo"
+        width="80"/>
+        <img
+        src="assets/img/logoTindinEscrita.png"
+        alt=""
+        class="logo ml-3"
+        width="200"/>
+    </div>
+
+    <!-- barra de pesquisa -->
+    <div class="col-md-5 d-flex align-items-center form-group">
+      <input type="text" class="form-control" name="pesquisa" id="pesquisa">
+      <span class="uil uil-search pesquisaButton"></span>
+    </div>
+    <!-- barra de pesquisa -->
+
+    <!-- logar e cadastrar -->
+    <div class="col-md-2 d-flex align-items-center justify-content-center">
+      <small class="text-white text-center">
+        Faça <a routerLink='/login' class="link">login</a> <br> ou <a routerLink='/login' class="link">cadastre-se</a>
+      </small>
+    </div>
+    <!-- /logar e cadastrar -->
+
+    <!-- carrinho -->
+    <div class="col-2 d-flex align-items-center fs-4 justify-content-evenly">
+      <i class="uil uil-shopping-bag icons position-relative" aria-hidden="true" routerLink='/checkout'>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
+          <span class="visually-hidden">Itens no carrinho</span>
+        </span>
+      </i>
+    </div>
+    <!-- /carrinho -->
+
+  </div>
+
+</div>

@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --cinza: #131515;
+  --white: #dff3e4;
+  --verde-tiffany: #0abab5;
+  --azul-td: #003592;
+  --verde-td: #9AC026;
+  --rosa-td: #EA5F9B;
+}
+
+.fundo{
+  background-color: #0abab5;
+}
+
+
