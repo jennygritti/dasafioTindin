@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../model/User';
 import { UserLogin } from '../model/UserLogin';
 
 @Injectable({
@@ -12,8 +11,9 @@ export class AuthService {
   constructor(
     private http: HttpClient
   ) { }
+  
 
-  cadastrar(user: User): Observable<User>{
-    return this.http.post<User>('https://api-labs.tindin.com.br/auth', user)
+  logar(userLogin: UserLogin): Observable<UserLogin>{
+    return this.http.post<UserLogin>('https://api-labs.tindin.com.br/auth', userLogin)
   }
 }
