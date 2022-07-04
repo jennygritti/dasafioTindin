@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../model/User';
+import { environment } from 'src/environments/environment.prod';
 import { UserLogin } from '../model/UserLogin';
 import { AuthService } from '../service/auth.service';
 
@@ -12,7 +12,6 @@ import { AuthService } from '../service/auth.service';
 export class LoginComponent implements OnInit {
 
   userLogin: UserLogin = new UserLogin
-  user: User = new User
   confirmarSenha: string
 
   constructor(
@@ -23,22 +22,25 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  confirmSenha(event: any){
-    this.confirmarSenha = event.target.value
 
+  logar() {
+    this.auth.logar(this.userLogin).subscribe({next:(resp: UserLogin) => {
+        this.userLogin = resp;
+        environment.token = this.userLogin.token;
+        environment.email = this.userLogin.email;
+        environment.senha = this.userLogin.password;
+
+        console.log(environment.token)
+        console.log(environment.email)
+        console.log(environment.senha)
+        alert('logado')
+
+        this.router.navigate(['/inicio'], {queryParams: {userLogin: environment.id} })},
+      error: error => {
+        if (error.status === 401) {
+          alert('Usuário ou senha inválido');
+        }
+      }
+    })
   }
-
-  cadastrar(){
-    this.user.tipo = 'cliente';
-    if (this.user.password == this.confirmarSenha) {
-      this.auth.cadastrar(this.user).subscribe((resp: User) => {
-        this.user = resp;
-        alert('Usuário cadastrado com sucesso');
-        this.router.navigate(['/inicio']);
-      });
-    } else {
-      alert('As senhas não coincidem');
-    }
-  }
-
 }

@@ -1,5 +1,5 @@
 import { Rank } from "./Rank";
-import { User } from "./User";
+import { UserLogin } from "./UserLogin";
 
 export class Produto{
   public id: number;
@@ -13,6 +13,6 @@ export class Produto{
   public releaseYear: number;
   public genres: string;
   public platforms: string;
-  public user: User;
+  public user: UserLogin;
   public rank: Rank
 }
