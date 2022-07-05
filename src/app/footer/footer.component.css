@@ -1,0 +1,46 @@
+.rodape {
+  min-height: 80px;
+  background-color: var(--cinza-claro);
+}
+
+button:hover{
+  font-size: 1.25rem;
+  transform: translate3d(0, 3px, 0);
+}
+a{
+  color: var(--vermelho);
+}
+button{
+  padding: 0.25rem 0.55rem;
+  border: unset;
+  border-radius: 2rem;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  z-index: 1;
+  background: var(--cinza-claro);
+  position: relative;
+  font-size: 1.50rem;
+  transition: all 250ms;
+  overflow: hidden;
+}
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 30em;
+  background-color: var(--white);
+  z-index: -1;
+  transition: all 250ms
+}
+
+button:hover {
+  color: #e8e8e8;
+}
+
+button:hover::before {
+  width: 100%;
+}

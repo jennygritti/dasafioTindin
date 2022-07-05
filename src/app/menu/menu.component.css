@@ -2,16 +2,20 @@
   min-height: 125px;
 }
 
+.barraPesquisa{
+  border-radius: 50px;
+}
+
 .pesquisaButton {
   background-color: var(--dark);
-  border-radius: 5px;
-  padding:0.750rem 2rem;
+  border-radius: 50px;
+  padding:0.250rem 1rem;
   color: var(--white);
   margin-left: -60px;
 }
 
 .pesquisaButton:hover {
-  background-color: var(--rosa-td);
+  background-color: var(--vermelho);
 }
 
 .link {

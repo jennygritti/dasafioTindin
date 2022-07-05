@@ -1,14 +1,16 @@
 :root {
-  --cinza: #131515;
+  --cinza: #1b1919;
+  --cinza-claro: #2c2b2b;
   --white: #dff3e4;
+  --vermelho: #fc4444;
   --verde-tiffany: #0abab5;
   --azul-td: #003592;
   --verde-td: #9AC026;
   --rosa-td: #EA5F9B;
 }
 
-.fundo{
-  background-color: #0abab5;
+body{
+  background-color: var(--cinza);
 }
 
 
