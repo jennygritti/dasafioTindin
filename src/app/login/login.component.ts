@@ -30,10 +30,8 @@ export class LoginComponent implements OnInit {
         environment.email = this.userLogin.email;
         environment.senha = this.userLogin.password;
 
-        console.log(environment.token)
-        console.log(environment.email)
-        console.log(environment.senha)
-        alert('logado')
+
+        alert('Logado com sucesso!!')
 
         this.router.navigate(['/inicio'], {queryParams: {userLogin: environment.id} })},
       error: error => {
