@@ -22,11 +22,9 @@
 
   <!-- Usuario Logado -->
     <div class="col-md-2 d-flex align-items-center justify-content-center" *ngIf='auth.logado()'>
-      <small class="text-white text-center">
-        Olá!
-      </small>
-      <small> <a routerLink='/cadastro-produto' class="link"> Cadastrar itens </a> </small>
-      <small><a href="" class="link" (click)='sair()'> Sair </a></small>
+      <small class="text-white text-center"> Olá!</small>
+      <small> <a routerLink='/cadastro-produto' class="link ml-3">| Cadastrar itens |</a> </small>
+      <small> <a href="" class="link ml-3" (click)='sair()'>Sair</a></small>
     </div>
 
 
@@ -34,9 +32,9 @@
 
     <!-- carrinho -->
     <div class="col-2 d-flex align-items-center fs-4 justify-content-evenly">
-      <i class="uil uil-shopping-bag icons position-relative" aria-hidden="true" routerLink='/checkout'>
+      <i class="uil uil-shopping-bag icons position-relative" aria-hidden="true" routerLink='/carrinho'>
         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
-          <span class="visually-hidden">Itens no carrinho</span>
+          <span class="visually-hidden"></span>
         </span>
       </i>
     </div>

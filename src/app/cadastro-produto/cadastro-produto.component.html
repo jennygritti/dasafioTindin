@@ -5,81 +5,89 @@
     </div>
 
     <!-- cadastro produto -->
+
     <div class="col-md-6 offset-md-3 justify-content-center text-light mt-5">
       <form action="" class="d-flex flex-column">
+        <!-- NOME -->
         <div class="form-group">
           <label for="nome">Nome:</label>
           <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do produto"
             [(ngModel)]="produto.title" />
         </div>
+        <!-- FOTO -->
         <div class="form-group mb-2">
           <label for="foto">Foto:</label>
           <input type="text" class="form-control" id="foto" name="foto" placeholder="Foto do produto (url)"
             [(ngModel)]="produto.photo" />
         </div>
-
+        <!-- PREÇO -->
         <div class="form-group mb-2">
           <label for="preco">Preço:</label>
           <input type="number" class="form-control" id="preco" name="preco" placeholder="Preço do produto"
-            [(ngModel)]="produto.mediumPrice" />
+            [(ngModel)]="produto.mediumPrice"/>
         </div>
+        <!-- DESCRIÇÃO -->
         <div class="form-group mb-2">
           <label for="descricao">Descrição:</label>
           <textarea class="form-control" id="descricao" name="descricao" rows="3" placeholder="Descrição do produto"
             [(ngModel)]="produto.description"></textarea>
         </div>
+        <!-- ESTILO DO JOGO -->
         <div class="form-group mb-2">
           <label for="estilo">Estilo:</label>
-          <select name="estilo" id="estilo" class="form-control" [(ngModel)]="produto.genres">
-            <option value="fight">Fight</option>
-            <option value="sports">Sports</option>
-            <option value="survival">Survival</option>
-            <option value="horror">Horror</option>
-            <option value="rpg">RPG</option>
-            <option value="fps">FPS</option>
-            <option value="tps">TPS</option>
-            <option value="plataform">Plataform</option>
-            <option value="adventure">Adventure</option>
-            <option value="action">Action</option>
-            <option value="minigame">Minigame</option>
-            <option value="racing">Racing</option>
-            <option value="strategy">Strategy</option>
+          <select name="estilo" id="estilo" class="form-control" multiple [(ngModel)]="produto.genres">
+            <option value="Fight">Fight</option>
+            <option value="Sports">Sports</option>
+            <option value="Survival">Survival</option>
+            <option value="Horror">Horror</option>
+            <option value="RPG">RPG</option>
+            <option value="FPS">FPS</option>
+            <option value="TPS">TPS</option>
+            <option value="Plataform">Plataform</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Action">Action</option>
+            <option value="Minigame">Minigame</option>
+            <option value="Racing">Racing</option>
+            <option value="Strategy">Strategy</option>
             <option value="Musical">Musical</option>
             <option value="Dance">Dance</option>
             <option value="Simulator">Simulator</option>
           </select>
         </div>
+        <!-- PLATAFORMA DO JOGO -->
         <div class="form-group mb-2">
           <label for="platforms">Plataforma</label>
-          <select name="platforms" id="plataforms" class="form-control" placeholder="plataforma do produto"
-            [(ngModel)]="produto.genres">
-            <option value="ps">PS</option>
-            <option value="ps2">PS2</option>
-            <option value="ps3">PS3</option>
-            <option value="ps4">PS4</option>
-            <option value="ps5">PS5</option>
-            <option value="psp">PSP</option>
-            <option value="xbox">XBOX</option>
-            <option value="xbox360">XBOX 360</option>
-            <option value="xboxOne">XBOX ONE</option>
-            <option value="xboxSeriesS">XBOX SERIES S</option>
-            <option value="xboxSeriesX">XBOX SERIES X</option>
-            <option value="superNintendo">SUPER NINTENDO</option>
-            <option value="nintendo64">NINTENDO 64</option>
-            <option value="nintendoSwitch">NINTENDO SWITCH</option>
-            <option value="nintendoWii">NINTENDO WII</option>
-            <option value="nintendoDs">NINTENDO DS</option>
-            <option value="nintendo3ds">NINTENDO 3DS</option>
-            <option value="megaDrive">MEGA DRIVE</option>
-            <option value="pc">PC</option>
-            <option value="mobile">MOBILE</option>
+          <select name="platforms" id="plataforms" class="form-control" multiple placeholder="plataforma do produto"
+            [(ngModel)]="produto.platforms">
+            <option value="PS">PS</option>
+            <option value="PS2">PS2</option>
+            <option value="PS3">PS3</option>
+            <option value="PS4">PS4</option>
+            <option value="PS5">PS5</option>
+            <option value="PSP">PSP</option>
+            <option value="XBOX">XBOX</option>
+            <option value="XBOX360">XBOX 360</option>
+            <option value="XBOXOne">XBOX ONE</option>
+            <option value="XBOX SERIES S">XBOX SERIES S</option>
+            <option value="XBOX SERIES X">XBOX SERIES X</option>
+            <option value="SUPER NINTENDO">SUPER NINTENDO</option>
+            <option value="NINTENDO 64">NINTENDO 64</option>
+            <option value="NINTENDO SWITCH">NINTENDO SWITCH</option>
+            <option value="NINTENDO WII">NINTENDO WII</option>
+            <option value="NINTENDO DS">NINTENDO DS</option>
+            <option value="NINTENDO 3DS">NINTENDO 3DS</option>
+            <option value="MEGA DRIVE">MEGA DRIVE</option>
+            <option value="PC">PC</option>
+            <option value="MOBILE">MOBILE</option>
           </select>
         </div>
+        <!-- ANO DO LANÇAMENTO -->
         <div class="form-group mb-2">
-          <label for="dataLancamento">Data de Lançamento:</label>
-          <input type="date" class="form-control" id="dataLancamento" name="dataLancamento"
+          <label for="dataLancamento">Ano de Lançamento:</label>
+          <input type="number" class="form-control" id="dataLancamento" name="dataLancamento"
             [(ngModel)]="produto.releaseYear" />
         </div>
+        <!-- BOTOES DE CADASTRO -->
         <div class="d-flex justify-content-center mb-5">
           <button type="submit" class="btn btn-outline-success" (click)="cadProduto()">
             Cadastrar

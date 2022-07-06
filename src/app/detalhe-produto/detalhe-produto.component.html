@@ -1,1 +1,48 @@
-<p>detalhe-produto works!</p>
+<div class="container-fluid">
+  <div class="container">
+    <div class="row d-flex justify-content-between">
+      <h1 class="mb-5 ps-5 ms-5">{{ produto.title }}</h1>
+      <div class="col-5 d-flex justify-content-center">
+        <div class="col-8">
+          <img
+            [src]="produto.photo"
+            alt=""
+            class="img-fluid rounded-3 imagem-produto"
+          />
+        </div>
+      </div>
+      <div class="col d-flex align-items-center">
+        <div class="row">
+          <span class="fw-bold">Plataforma: {{ produto.platforms }}</span>
+          <div class="d-flex align-items-center justify-content-between">
+
+            <button class="botao btn w-25" (click)="addProduto()">
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i> Comprar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+    <div class="d-flex flex-column mt-3 border p-3 rounded-3 border-dark">
+      <h4>Descrição:</h4>
+      <p class="w-100">{{ produto.description }}</p>
+      <small
+        >Publicado por:
+        <span class="fw-bold">{{ produto.company }}</span></small
+      >
+      <small
+        >Data de Lançamento:
+        <span class="fw-bold">{{
+          produto.releaseYear | date: "dd/MM/yyyy"
+        }}</span></small
+      >
+      <small
+        >Genero: <span class="fw-bold">{{ produto.genres }}</span></small
+      >
+    </div>
+    <hr />
+  </div>
+
+
