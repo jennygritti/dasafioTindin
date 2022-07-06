@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="row d-flex align-items-center">
+    <div class="col-md-12 d-flex justify-content-center mt-5 text-light">
+      <i class="uil uil-home" routerLink="/inicio"> | Cadastre seu jogo aqui!</i>
+    </div>
+
+    <!-- cadastro produto -->
+    <div class="col-md-6 offset-md-3 justify-content-center text-light mt-5">
+      <form action="" class="d-flex flex-column">
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do produto"
+            [(ngModel)]="produto.title" />
+        </div>
+        <div class="form-group mb-2">
+          <label for="foto">Foto:</label>
+          <input type="text" class="form-control" id="foto" name="foto" placeholder="Foto do produto (url)"
+            [(ngModel)]="produto.photo" />
+        </div>
+
+        <div class="form-group mb-2">
+          <label for="preco">Preço:</label>
+          <input type="number" class="form-control" id="preco" name="preco" placeholder="Preço do produto"
+            [(ngModel)]="produto.mediumPrice" />
+        </div>
+        <div class="form-group mb-2">
+          <label for="descricao">Descrição:</label>
+          <textarea class="form-control" id="descricao" name="descricao" rows="3" placeholder="Descrição do produto"
+            [(ngModel)]="produto.description"></textarea>
+        </div>
+        <div class="form-group mb-2">
+          <label for="estilo">Estilo:</label>
+          <select name="estilo" id="estilo" class="form-control" [(ngModel)]="produto.genres">
+            <option value="fight">Fight</option>
+            <option value="sports">Sports</option>
+            <option value="survival">Survival</option>
+            <option value="horror">Horror</option>
+            <option value="rpg">RPG</option>
+            <option value="fps">FPS</option>
+            <option value="tps">TPS</option>
+            <option value="plataform">Plataform</option>
+            <option value="adventure">Adventure</option>
+            <option value="action">Action</option>
+            <option value="minigame">Minigame</option>
+            <option value="racing">Racing</option>
+            <option value="strategy">Strategy</option>
+            <option value="Musical">Musical</option>
+            <option value="Dance">Dance</option>
+            <option value="Simulator">Simulator</option>
+          </select>
+        </div>
+        <div class="form-group mb-2">
+          <label for="platforms">Plataforma</label>
+          <select name="platforms" id="plataforms" class="form-control" placeholder="plataforma do produto"
+            [(ngModel)]="produto.genres">
+            <option value="ps">PS</option>
+            <option value="ps2">PS2</option>
+            <option value="ps3">PS3</option>
+            <option value="ps4">PS4</option>
+            <option value="ps5">PS5</option>
+            <option value="psp">PSP</option>
+            <option value="xbox">XBOX</option>
+            <option value="xbox360">XBOX 360</option>
+            <option value="xboxOne">XBOX ONE</option>
+            <option value="xboxSeriesS">XBOX SERIES S</option>
+            <option value="xboxSeriesX">XBOX SERIES X</option>
+            <option value="superNintendo">SUPER NINTENDO</option>
+            <option value="nintendo64">NINTENDO 64</option>
+            <option value="nintendoSwitch">NINTENDO SWITCH</option>
+            <option value="nintendoWii">NINTENDO WII</option>
+            <option value="nintendoDs">NINTENDO DS</option>
+            <option value="nintendo3ds">NINTENDO 3DS</option>
+            <option value="megaDrive">MEGA DRIVE</option>
+            <option value="pc">PC</option>
+            <option value="mobile">MOBILE</option>
+          </select>
+        </div>
+        <div class="form-group mb-2">
+          <label for="dataLancamento">Data de Lançamento:</label>
+          <input type="date" class="form-control" id="dataLancamento" name="dataLancamento"
+            [(ngModel)]="produto.releaseYear" />
+        </div>
+        <div class="d-flex justify-content-center mb-5">
+          <button type="submit" class="btn btn-outline-success" (click)="cadProduto()">
+            Cadastrar
+          </button>
+          <button class="btn btn-danger ml-5" routerLink="/inicio">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+    <!-- /cadastro produto -->
+
+  </div>
+</div>

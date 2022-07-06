@@ -1,30 +1,32 @@
 <div class="container-fluid">
   <div class="row bg-danger barra">
     <div class="col-md-3 d-flex  align-items-center">
-      <img
-        src="assets/img/logoTindinBranco.png"
-        alt=""
-        class="logo"
-        width="80"/>
-        <img
-        src="assets/img/logoTindinEscritaBranco.png"
-        alt=""
-        class="logo ml-3"
-        width="200"/>
+      <img src="assets/img/logoTindinBranco.png" alt="" class="logo" width="80" />
+      <img src="assets/img/logoTindinEscritaBranco.png" alt="" class="logo ml-3" width="200" />
     </div>
 
     <!-- barra de pesquisa -->
-    <div class="col-md-5 d-flex align-items-center form-group ">
+    <div class="col-md-5 d-flex align-items-center form-group" >
       <input type="text" class="form-control barraPesquisa" name="pesquisa" id="pesquisa">
       <span class="uil uil-search border border-danger pesquisaButton"></span>
     </div>
     <!-- barra de pesquisa -->
 
     <!-- logar e cadastrar -->
-    <div class="col-md-2 d-flex align-items-center justify-content-center">
+    <div class="col-md-2 d-flex align-items-center justify-content-center" *ngIf='!auth.logado()'>
       <small class="text-white text-center">
         Faça aqui seu <a routerLink='/login' class="link">LOGIN</a>
       </small>
+
+
+    <div class="col-md-2 d-flex align-items-center justify-content-center" *ngIf='auth.logado()'>
+      <small class="text-white text-center">
+        Olá!
+      </small>
+      <small> <a routerLink='/cadastro-produtos'>Cadastrar itens</a> </small>
+      <small><a href="" (click)='sair()'>Sair</a></small>
+    </div>
+
     </div>
     <!-- /logar e cadastrar -->
 

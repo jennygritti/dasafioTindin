@@ -9,6 +9,9 @@ import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { FooterComponent } from './footer/footer.component';
+import { DetalheProdutoComponent } from './detalhe-produto/detalhe-produto.component';
+import { CadastroProdutoComponent } from './cadastro-produto/cadastro-produto.component';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { FooterComponent } from './footer/footer.component';
     MenuComponent,
     LoginComponent,
     InicioComponent,
-    FooterComponent
+    FooterComponent,
+    DetalheProdutoComponent,
+    CadastroProdutoComponent,
+    CarrinhoComponent
   ],
   imports: [
     BrowserModule,
