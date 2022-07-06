@@ -40,7 +40,40 @@
         </div>
       </div>
       <!-- /Carrossel -->
-    </div>
+
+      <!-- Card dos produtos -->
+
+
+          <div class="produto-card my-3">
+            <div class="card">
+        <!-- FOTO -->
+        <a [routerLink]="['/detalhe-produto']">
+          <img src="produto.photo" alt="">
+        </a>
+        <!-- TITULO -->
+        <div class="card-body p-0">
+          <p class="card-text text-center elipse m-1 fs-6">
+            {{ produto.title }}
+          </p>
+        </div>
+        <!-- PREÇO -->
+        <div class="d-flex">
+          <div class="d-flex flex-column justify-content-between m-2">
+            <small class="m-1 text-dark">{{ produto.mediumPrice | currency: "BRL" }}</small>
+            <small class="">A vista no PIX</small>
+          </div>
+        </div>
+
+        <button class="btn w-100 comprar">
+          <i class="fa fa-cart-plus" aria-hidden="true"></i>
+          <span>Comprar</span>
+        </button>
+
+      </div>
+          </div>
+
+
+    <!-- Card dos produtos -->
   </div>
 </div>
 
