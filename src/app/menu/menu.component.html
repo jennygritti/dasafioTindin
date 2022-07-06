@@ -13,21 +13,23 @@
     <!-- barra de pesquisa -->
 
     <!-- logar e cadastrar -->
+    <!-- Usuario Não logado -->
     <div class="col-md-2 d-flex align-items-center justify-content-center" *ngIf='!auth.logado()'>
       <small class="text-white text-center">
         Faça aqui seu <a routerLink='/login' class="link">LOGIN</a>
       </small>
+    </div>
 
-
+  <!-- Usuario Logado -->
     <div class="col-md-2 d-flex align-items-center justify-content-center" *ngIf='auth.logado()'>
       <small class="text-white text-center">
         Olá!
       </small>
-      <small> <a routerLink='/cadastro-produtos'>Cadastrar itens</a> </small>
-      <small><a href="" (click)='sair()'>Sair</a></small>
+      <small> <a routerLink='/cadastro-produto' class="link"> Cadastrar itens </a> </small>
+      <small><a href="" class="link" (click)='sair()'> Sair </a></small>
     </div>
 
-    </div>
+
     <!-- /logar e cadastrar -->
 
     <!-- carrinho -->

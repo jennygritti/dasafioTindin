@@ -36,13 +36,6 @@ export class AuthService {
     return ok
   }
 
-  // nome(){
-  //   let nome: string = ''
-  //   let nomeSalvo: any = localStorage.getItem('nome')
-  //   if (nomeSalvo != ''){
-  //     nome = nomeSalvo
-  //   }
-  //   return nome;
-  // }
+  
 
 }
