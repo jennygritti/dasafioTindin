@@ -1,5 +1,14 @@
+.fundo{
+  background-color: var(--vermelho);
+}
+
 .barra {
   min-height: 125px;
+  background-color: var(--vermelho);
+}
+
+.logo{
+  cursor: pointer;
 }
 
 .barraPesquisa{

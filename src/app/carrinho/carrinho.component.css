@@ -1,0 +1,29 @@
+.btn-verde{
+  color: white;
+  background-color: var(--verde-td);
+}
+
+.text-verde{
+  color: var(--verde-td);
+}
+
+.produtoFoto {
+  min-height: 100%;
+  max-height: 150px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card:hover {
+  color: var(--cinza-claro);
+  border-color: var(--white);
+  transform: translate3d(0, 3px, 0);
+}
+
+.card {
+  color: var(--cinza);
+  border:solid 3px;
+  border-color: var(--vermelho);
+  border-radius: 0.50rem;
+  transition: 0.7s ease;
+}

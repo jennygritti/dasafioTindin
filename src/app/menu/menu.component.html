@@ -1,29 +1,30 @@
-<div class="container-fluid">
-  <div class="row bg-danger barra">
-    <div class="col-md-3 d-flex  align-items-center">
-      <img src="assets/img/logoTindinBranco.png" alt="" class="logo" width="80" />
-      <img src="assets/img/logoTindinEscritaBranco.png" alt="" class="logo ml-3" width="200" />
-    </div>
+<div class="container-fluid fundo">
+  <div class="container">
+    <div class="row barra">
+      <div class="col-md-3 d-flex  align-items-center">
+        <img src="assets/img/logoTindinBranco.png" alt="" class="logo" width="60" />
+        <img src="assets/img/logoTindinEscritaBranco.png" alt="" class="logo ml-3" width="100" routerLink="/inicio" />
+      </div>
 
     <!-- barra de pesquisa -->
-    <div class="col-md-5 d-flex align-items-center form-group" >
-      <input type="text" class="form-control barraPesquisa" name="pesquisa" id="pesquisa">
+    <div class="col-md-4 d-flex align-items-center mt-3 form-group" >
+      <input [(ngModel)]="nomeProduto" type="text" class="form-control barraPesquisa" name="pesquisa" id="pesquisa" placeholder="Digite para pesquisar" (keyup)="findByTituloProduto()">
       <span class="uil uil-search border border-danger pesquisaButton"></span>
     </div>
     <!-- barra de pesquisa -->
 
-    <!-- logar e cadastrar -->
+    <!-- logar -->
     <!-- Usuario Não logado -->
-    <div class="col-md-2 d-flex align-items-center justify-content-center" *ngIf='!auth.logado()'>
+    <div class="col-md-4 d-flex align-items-center justify-content-center" *ngIf='!auth.logado()'>
       <small class="text-white text-center">
         Faça aqui seu <a routerLink='/login' class="link">LOGIN</a>
       </small>
     </div>
 
   <!-- Usuario Logado -->
-    <div class="col-md-2 d-flex align-items-center justify-content-center" *ngIf='auth.logado()'>
+    <div class="col-md-4 d-flex align-items-center justify-content-center" *ngIf='auth.logado()'>
       <small class="text-white text-center"> Olá!</small>
-      <small> <a routerLink='/cadastro-produto' class="link ml-3">| Cadastrar itens |</a> </small>
+      <small> <a routerLink='/cadastro-produto' class="link ml-2">| Cadastrar itens |</a> </small>
       <small> <a href="" class="link ml-3" (click)='sair()'>Sair</a></small>
     </div>
 
@@ -31,15 +32,15 @@
     <!-- /logar e cadastrar -->
 
     <!-- carrinho -->
-    <div class="col-2 d-flex align-items-center fs-4 justify-content-evenly">
+    <div class="col-1 d-flex align-items-center  justify-content-end">
       <i class="uil uil-shopping-bag icons position-relative" aria-hidden="true" routerLink='/carrinho'>
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
-          <span class="visually-hidden"></span>
-        </span>
+        <span class="visually-hidden"></span>
       </i>
     </div>
     <!-- /carrinho -->
 
   </div>
+  </div>
+
 
 </div>
