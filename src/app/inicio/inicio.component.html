@@ -42,37 +42,33 @@
       <!-- /Carrossel -->
 
       <!-- Card dos produtos -->
-
-
-          <div class="produto-card my-3">
-            <div class="card">
-        <!-- FOTO -->
-        <a [routerLink]="['/detalhe-produto']">
-          <img src="produto.photo" alt="">
-        </a>
-        <!-- TITULO -->
-        <div class="card-body p-0">
-          <p class="card-text text-center elipse m-1 fs-6">
-            {{ produto.title }}
-          </p>
-        </div>
-        <!-- PREÇO -->
-        <div class="d-flex">
-          <div class="d-flex flex-column justify-content-between m-2">
-            <small class="m-1 text-dark">{{ produto.mediumPrice | currency: "BRL" }}</small>
-            <small class="">A vista no PIX</small>
+      <div class="container-md">
+        <div class="row d-flex justify-content-around p-0 m-0 p-sm-0 m-sm-0">
+          <div class="produto-card my-3" *ngFor="let produto of listaProdutos">
+            <div class="card imagem-card">
+              <!-- FOTO -->
+              <a [routerLink]="['/detalhe-produto', produto._id]">
+                <img src="{{ produto.photo }}" alt="">
+              </a>
+              <!-- TITULO -->
+              <div class="card-body p-0">
+                <p class="card-text text-center  titulo ml-2">
+                  {{ produto.title }}
+                </p>
+              </div>
+              <!-- PREÇO -->
+                <div class="text-center">
+                  <small class="text-light">{{ produto.mediumPrice | currency: "BRL" }}</small>
+                </div>
+              <!-- BOTÃO COMPRA -->
+              <a class="btn w-100" (click)="getProdById(produto._id)">
+                <i class="uil uil-shopping-cart" aria-hidden="true"></i>
+                <span></span>
+              </a>
+            </div>
           </div>
         </div>
-
-        <button class="btn w-100 comprar">
-          <i class="fa fa-cart-plus" aria-hidden="true"></i>
-          <span>Comprar</span>
-        </button>
-
       </div>
-          </div>
-
-
     <!-- Card dos produtos -->
   </div>
 </div>

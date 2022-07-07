@@ -11,7 +11,7 @@ import { ProdutoService } from '../service/produto.service';
 })
 export class DetalheProdutoComponent implements OnInit {
   produto: Produto = new Produto();
-  idProd: number
+  
 
   constructor(
 
@@ -21,7 +21,14 @@ export class DetalheProdutoComponent implements OnInit {
 ) {}
 
 ngOnInit() {
-  this.idProd = this.route.snapshot.params['id']
+
+}
+
+getProdById(_id: number){
+  this.prod.getIdGame(_id).subscribe((resp: Produto) =>{
+    this.produto = resp;
+    this.addProduto()
+  })
 }
 
 addProduto(){

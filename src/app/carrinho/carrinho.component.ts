@@ -40,6 +40,7 @@ export class CarrinhoComponent implements OnInit {
 
   removerAll() {
     this.carrinho.limpar()
+    this.router.navigate(["/inicio"])
   }
 
 
