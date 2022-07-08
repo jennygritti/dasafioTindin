@@ -24,6 +24,7 @@ export class MenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
   getAllProdutos(){
@@ -32,15 +33,17 @@ export class MenuComponent implements OnInit {
     })
   }
 
+
   findByTituloProduto(){
-    if(this.nomeProduto == ''){
+    if (this.nomeProduto == '') {
       this.getAllProdutos()
-    } else{
-        this.prod.getByNameGame(this.nomeProduto).subscribe((resp: Produto[]) =>{
-          this.listaProdutos = resp
-    })
+    } else {
+      this.prod.getGameByName(this.nomeProduto).subscribe((resp: ListaProduto) => {
+        this.listaProdutos = resp.games;
+      });
   }
 }
+
 
   sair() {
     localStorage.clear();

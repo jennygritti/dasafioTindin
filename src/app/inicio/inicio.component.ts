@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ListaProduto } from '../model/ListaProduto';
+import { UnicoProduto } from '../model/UnicoProduto';
 import { Produto } from '../model/Produto';
 import { CarrinhoService } from '../service/carrinho.service';
 import { ProdutoService } from '../service/produto.service';
@@ -32,9 +33,9 @@ export class InicioComponent implements OnInit {
   }
 
   // pegar os produtos por id
-  getProdById(id: number){
-    this.prod.getIdGame(id).subscribe((resp: Produto) =>{
-      this.produto = resp;
+  getProdById(id: string){
+    this.prod.getIdGame(id).subscribe((resp: UnicoProduto) =>{
+      this.produto = resp.game;
       this.addProduto()
       alert("Produto adicionado ao carrinho com sucesso!")
     })

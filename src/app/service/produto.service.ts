@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { ListaProduto } from '../model/ListaProduto';
+import { UnicoProduto } from '../model/UnicoProduto';
 import { Produto } from '../model/Produto';
 
 @Injectable({
@@ -35,13 +36,17 @@ export class ProdutoService {
   }
 
   //buscar pelo nome do jogo
-  getByNameGame(title: string): Observable<Produto[]>{
-    return this.http.get<Produto[]>(`https://api-labs.tindin.com.br/games${title}`)
+  getGameByName(title: string): Observable<ListaProduto>{
+    return this.http.get<ListaProduto>(`https://api-labs.tindin.com.br/games?title=${title}`)
   }
 
+  // getGameByName(title: string): Observable<Produto[]>{
+  //   return this.http.get<Produto[]>(`https://api-labs.tindin.com.br/games?title=${title}`)
+  // }
+
   //buscar produtos por id
-  getIdGame(_id:number):Observable<Produto>{
-    return this.http.get<Produto>(`https://api-labs.tindin.com.br/games/{gameId}${_id}`)
+  getIdGame(_id:string):Observable<UnicoProduto>{
+    return this.http.get<UnicoProduto>(`https://api-labs.tindin.com.br/games/${_id}`)
   }
 
   // inserir produto

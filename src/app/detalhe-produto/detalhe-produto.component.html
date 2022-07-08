@@ -1,48 +1,37 @@
 <div class="container-fluid">
   <div class="container">
-    <div class="row d-flex justify-content-between">
-      <h1 class="mb-5 ps-5 ms-5 titulo">{{ produto.title }}</h1>
-      <div class="col-5 d-flex justify-content-center">
-        <div class="col-8">
-          <img
-            [src]="produto.photo"
-            alt=""
-            class="img-fluid rounded-3 imagem-produto"
-          />
-        </div>
-      </div>
-      <div class="col d-flex align-items-center">
-        <div class="row">
-          <span class="fw-bold">Plataforma: {{ produto.platforms }}</span>
-          <div class="d-flex align-items-center justify-content-between">
 
-            <button class="botao btn w-25" (click)="addProduto()">
-              <i class="uil uil-shopping-cart" aria-hidden="true"></i>
-            </button>
-          </div>
+    <div class="row d-flex align-items-center mt-5">
+      <!-- IMAGEM -->
+      <div class="col-md-6">
+        <img [src]="produto.photos[0].url" [alt]="produto.photos[0].name" class="img-fluid rounded-3 imagem-produto" />
+      </div>
+      <!-- DETALHES -->
+      <div class="col-md-6">
+        <h1 class="titulo">{{ produto.title }}</h1>
+        <hr>
+        <p class="fs-15"><span>Gênero:</span> {{ produto.genres }}</p>
+        <p class="fs-15"><span>Plataforma:</span> {{ produto.platforms }}</p>
+        <hr>
+        <p class="fs-18 tx-vermelho"><span class="tx-cinza">Preço:</span> {{ produto.mediumPrice  | currency: "BRL" }}</p>
+        <small class="tx-cinza">Data de Lançamento:<span class="">{{ produto.releaseYear | date: "dd/MM/yyyy" }}</span></small>
+        <div>
+          <button class="botao btn btn-block mt-5" (click)="addProduto()">
+            <i class="uil uil-shopping-cart" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
     </div>
 
-    <hr />
-    <div class="d-flex flex-column mt-3 border p-3 rounded-3 border-dark">
+    <hr/>
+
+    <div class="d-flex flex-column mt-3 mb-3 border p-3 rounded">
       <h4>Descrição:</h4>
       <p class="w-100">{{ produto.description }}</p>
-      <small
-        >Publicado por:
-        <span class="fw-bold">{{ produto.company }}</span></small
-      >
-      <small
-        >Data de Lançamento:
-        <span class="fw-bold">{{
-          produto.releaseYear | date: "dd/MM/yyyy"
-        }}</span></small
-      >
-      <small
-        >Genero: <span class="fw-bold">{{ produto.genres }}</span></small
-      >
     </div>
-    <hr />
+
+    <hr/>
+
   </div>
 
 
