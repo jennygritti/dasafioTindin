@@ -41,14 +41,15 @@
       </div>
       <!-- /Carrossel -->
 
+
       <!-- Card dos produtos -->
       <div class="container-md">
         <div class="row d-flex justify-content-around p-0 m-0 p-sm-0 m-sm-0">
           <div class="produto-card my-3" *ngFor="let produto of listaProdutos">
-            <div class="card imagem-card">
+            <div class="card">
               <!-- FOTO -->
               <a [routerLink]="['/detalhe-produto', produto._id]">
-                <img src="{{ produto.photo }}" alt="">
+                <img class="card-img-top img-fluid" src="{{ produto.photos[0].url }}" alt="{{ produto.photos[0].name }}">
               </a>
               <!-- TITULO -->
               <div class="card-body p-0">

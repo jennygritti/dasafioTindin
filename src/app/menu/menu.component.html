@@ -2,13 +2,13 @@
   <div class="container">
     <div class="row barra">
       <div class="col-md-3 d-flex  align-items-center">
-        <img src="assets/img/logoTindinBranco.png" alt="" class="logo" width="60" />
+        <img src="assets/img/logoTindinBranco.png" alt="" class="logo" width="60" routerLink="/inicio" />
         <img src="assets/img/logoTindinEscritaBranco.png" alt="" class="logo ml-3" width="100" routerLink="/inicio" />
       </div>
 
     <!-- barra de pesquisa -->
     <div class="col-md-4 d-flex align-items-center mt-3 form-group" >
-      <input [(ngModel)]="nomeProduto" type="text" class="form-control barraPesquisa" name="pesquisa" id="pesquisa" placeholder="Digite para pesquisar" (keyup)="findByTituloProduto()">
+      <input [(ngModel)]="nomeProduto" (keyup)="findByTituloProduto()" type="text" class="form-control barraPesquisa" name="pesquisa" id="pesquisa" placeholder="Digite para pesquisar" >
       <span class="uil uil-search border border-danger pesquisaButton"></span>
     </div>
     <!-- barra de pesquisa -->

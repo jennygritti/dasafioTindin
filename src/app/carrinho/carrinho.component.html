@@ -5,22 +5,22 @@
     </div>
     <div class="row d-flex align-items-center justify-content-between">
       <div class="col-7">
-        <div class="row border rounded border-dark p-0 mb-3" *ngFor='let item of listaCompras'>
-          <div class="col-3 p-0 m-0">
-            <img [src]="item.photo" alt="" class="produtoFoto rounded" >
+        <div class="row border rounded border-light p-0 mb-3" *ngFor='let item of listaCompras'>
+          <div class="col-3 p-0 mr-2">
+            <img [src]="item.photos[0].url" alt="" class="produtoFoto rounded">
           </div>
-          <div class="col-6 d-flex flex-column justify-content-center">
+          <div class="col-5 d-flex flex-column justify-content-center text-light">
             <div class="row">
               <h5> {{item.title}}</h5>
             </div>
           </div>
           <div class="col-3">
-            <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="row d-flex justify-content-end align-items-center h-100 text-light">
               <h5 class="text-center"> {{item.mediumPrice | currency: "BRL"}}</h5>
             </div>
           </div>
 
-          <button class="btn btn-outline-danger btn-block mt-2">Remover Item</button>
+
 
         </div>
       </div>
@@ -41,11 +41,12 @@
         </div>
       </div>
     </div>
+    <hr>
   </div>
-<hr>
   <div class="col-12 mt-5">
+
     <div class="row d-flex justify-content-center">
-      <button class="btn btn-outline-danger mr-3" (click)="removerAll()" >Remover Todos os Itens</button>
+      <button class="btn btn-outline-danger mr-3" (click)="removerAll()">Remover Todos os Itens</button>
       <button class="btn btn-outline-success" routerLink="/inicio">Continuar Comprando</button>
     </div>
-</div>
+  </div>

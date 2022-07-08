@@ -1,11 +1,12 @@
 import { Rank } from "./Rank";
+import { Photo } from "./Photo";
 import { UserLogin } from "./UserLogin";
 
 export class Produto{
-  public _id: number;
+  public _id: string;
   public title: string;
   public description: string;
-  public photo: string;
+  public photos: Photo[];
   public videos: string;
   public mediumPrice: number;
   public studio: null;
